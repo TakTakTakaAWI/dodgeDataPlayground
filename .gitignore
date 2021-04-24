@@ -2,6 +2,7 @@ node_modules/
 dist/
 coverage/
 rawData/
+saveFiles/
 *.pem
 *.key
 .env

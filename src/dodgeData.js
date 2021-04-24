@@ -1,6 +1,6 @@
-import Client from 'ftp';
-import fs from 'fs';
-import dotenv from 'dotenv';
+const Client = require('ftp');
+const fs = require('fs');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -23,7 +23,7 @@ c.list("/", false, (err, item) => {
                 console.error(`${x.name} could not be downloaded: ${err}`);
             } else {
                 stream.once('close', () => {});
-                if (!fs.existsSync(x.name)) {
+                if (!fs.existsSync(`./rawData/${x.name}`)) {
                     stream.pipe(fs.createWriteStream(x.name));
                 } else {
                     console.warn(`Skipping ${x.name} file exists.`)
